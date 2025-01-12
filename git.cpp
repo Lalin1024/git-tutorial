@@ -16,16 +16,35 @@ class Dog:public Animal
        std::cout<<"It barks"<<std::endl; 
     }
 
-    void Breed()
+    virtual void Breed()
     {
         std::cout<<"Labrador"<<std::endl;
     }
 
 };
 
+class Lion:public Animal
+{
+    public:
+    void sound() override
+    {
+        std::cout<<"It roars"<<std::endl;
+    }
+    void power()
+    {
+        std::cout<<"It is powerful"<<std::endl;
+    }
+};
+
+void selector(Animal *obj)
+{
+    obj->sound();
+}
+
 int main()
 {
-    Animal *obj=new Dog();
-    Dog *obj2=dynamic_cast<Dog*>(obj);
-    obj2->Breed();
+    Dog d;
+    Lion l;
+    selector(&d);
+    selector(&l);
 }
